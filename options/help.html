@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Chrome Companion Help</title>
+  <link rel="stylesheet" href="options.css">
+  <style>
+    .help-section {
+      margin-bottom: 20px;
+    }
+
+    .help-section h2 {
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 6px 10px;
+      border: 2px solid #5c4033;
+      background: #fffdf0;
+    }
+
+    th {
+      background: #d4a373;
+      color: #2c2c2c;
+      font-weight: bold;
+    }
+
+    code {
+      background: #d4a373;
+      padding: 1px 5px;
+      border-radius: 2px;
+      font-size: 12px;
+    }
+
+    .shortcut {
+      display: inline-block;
+      background: #5c4033;
+      color: #fefae0;
+      padding: 2px 6px;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .version {
+      margin-top: 24px;
+      font-size: 11px;
+      color: #8a7560;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chrome Companion</h1>
+    <p class="subtitle">Help</p>
+
+    <div class="help-section">
+      <h2>Getting Started</h2>
+      <ul>
+        <li><strong>Drag</strong> the companion anywhere on the page — she remembers her position.</li>
+        <li><strong>Click</strong> the companion to open the chat panel.</li>
+        <li>Configure your LLM provider in <strong>Settings</strong> (⚙ button) to start chatting.</li>
+      </ul>
+    </div>
+
+    <div class="help-section">
+      <h2>Chat Commands</h2>
+      <table>
+        <tr>
+          <th>Command</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>/help</code></td>
+          <td>Show available commands in chat</td>
+        </tr>
+        <tr>
+          <td><code>/set-emotion &lt;name&gt;</code></td>
+          <td>Change sprite — neutral, idle, happy, blush, angry</td>
+        </tr>
+        <tr>
+          <td><code>/clear</code></td>
+          <td>Clear chat history and conversation context</td>
+        </tr>
+        <tr>
+          <td><code>/settings</code></td>
+          <td>Open the settings page</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="help-section">
+      <h2>Supported LLM Providers</h2>
+      <table>
+        <tr>
+          <th>Provider</th>
+          <th>Models</th>
+        </tr>
+        <tr>
+          <td>OpenAI</td>
+          <td>gpt-4o-mini, gpt-4o, gpt-4.1-nano, gpt-4.1-mini</td>
+        </tr>
+        <tr>
+          <td>Anthropic</td>
+          <td>claude-sonnet-4, claude-haiku-4</td>
+        </tr>
+        <tr>
+          <td>Google Gemini</td>
+          <td>gemini-2.0-flash, gemini-2.5-flash, gemini-2.5-pro</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="help-section">
+      <h2>Features</h2>
+      <ul>
+        <li><strong>Draggable</strong> — position persists across all sites</li>
+        <li><strong>Emotions</strong> — companion swaps between idle sprites and reacts on hover</li>
+        <li><strong>Speech bubble</strong> — auto-shows greetings with typewriter animation</li>
+        <li><strong>Chat panel</strong> — full conversation with LLM, retro pixel-art style</li>
+        <li><strong>Shadow DOM</strong> — styles never leak in or out of the host page</li>
+        <li><strong>SPA resilient</strong> — auto re-injects if the page removes the companion</li>
+      </ul>
+    </div>
+
+    <div class="help-section">
+      <h2>Tips</h2>
+      <ul>
+        <li>The companion shows <strong>happy</strong> face when you hover over her.</li>
+        <li>She randomly switches between <strong>neutral</strong> and <strong>idle</strong> sprites every 10–15 seconds.</li>
+        <li>Conversation history resets on page navigation. Use <code>/clear</code> to reset manually.</li>
+        <li>You can customize the system prompt in settings to change her personality.</li>
+      </ul>
+    </div>
+
+    <p class="version">Chrome Companion v1.1.0</p>
+  </div>
+</body>
+</html>

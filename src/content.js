@@ -45,12 +45,31 @@ import { attachMessageListeners } from './messages.js';
     chatTitle.className = 'chat-title';
     chatTitle.textContent = 'Chat';
 
+    // Header action buttons
+    const chatHeaderActions = document.createElement('div');
+    chatHeaderActions.className = 'chat-header-actions';
+
+    const chatSettingsBtn = document.createElement('button');
+    chatSettingsBtn.className = 'chat-header-btn';
+    chatSettingsBtn.textContent = '\u2699';
+    chatSettingsBtn.title = 'Settings';
+
+    const chatHelpBtn = document.createElement('button');
+    chatHelpBtn.className = 'chat-header-btn';
+    chatHelpBtn.textContent = '?';
+    chatHelpBtn.title = 'Help';
+
     const chatCloseBtn = document.createElement('button');
-    chatCloseBtn.className = 'chat-close';
+    chatCloseBtn.className = 'chat-header-btn';
     chatCloseBtn.textContent = 'X';
+    chatCloseBtn.title = 'Close';
+
+    chatHeaderActions.appendChild(chatSettingsBtn);
+    chatHeaderActions.appendChild(chatHelpBtn);
+    chatHeaderActions.appendChild(chatCloseBtn);
 
     chatHeader.appendChild(chatTitle);
-    chatHeader.appendChild(chatCloseBtn);
+    chatHeader.appendChild(chatHeaderActions);
 
     const chatMessagesEl = document.createElement('div');
     chatMessagesEl.className = 'chat-messages';
@@ -104,6 +123,8 @@ import { attachMessageListeners } from './messages.js';
         messages: chatMessagesEl,
         input: chatInputEl,
         closeBtn: chatCloseBtn,
+        settingsBtn: chatSettingsBtn,
+        helpBtn: chatHelpBtn,
         sendBtn: chatSendBtn,
       },
       { getPosition }

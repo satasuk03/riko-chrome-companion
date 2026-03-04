@@ -191,13 +191,19 @@ export const SHADOW_CSS = `
     color: #2c2c2c;
   }
 
-  .chat-close {
+  .chat-header-actions {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .chat-header-btn {
     background: none;
     border: 2px solid #5c4033;
     border-radius: 2px;
     color: #5c4033;
     font-family: 'Courier New', monospace;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
     padding: 2px 6px;
@@ -205,7 +211,7 @@ export const SHADOW_CSS = `
     transition: background 0.1s ease;
   }
 
-  .chat-close:hover {
+  .chat-header-btn:hover {
     background: #5c4033;
     color: #fefae0;
   }

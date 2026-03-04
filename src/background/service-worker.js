@@ -17,6 +17,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return false;
   }
 
+  if (message.type === 'OPEN_HELP') {
+    chrome.tabs.create({ url: chrome.runtime.getURL('options/help.html') });
+    sendResponse({ success: true });
+    return false;
+  }
+
   if (message.type === 'TEST_CONNECTION') {
     handleTestConnection(message)
       .then(sendResponse)

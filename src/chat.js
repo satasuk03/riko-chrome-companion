@@ -21,6 +21,14 @@ export function initChat(elements, deps) {
   elements.closeBtn.addEventListener('click', closeChat);
   elements.sendBtn.addEventListener('click', handleSendMessage);
 
+  elements.settingsBtn.addEventListener('click', () => {
+    chrome.runtime.sendMessage({ type: 'OPEN_SETTINGS' });
+  });
+
+  elements.helpBtn.addEventListener('click', () => {
+    chrome.runtime.sendMessage({ type: 'OPEN_HELP' });
+  });
+
   chatInput.addEventListener('keydown', (e) => {
     e.stopPropagation();
     if (e.key === 'Enter') handleSendMessage();

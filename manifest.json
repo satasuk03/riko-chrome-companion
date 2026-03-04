@@ -30,7 +30,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["assets/*.webp"],
+      "resources": ["assets/*.webp", "options/help.html", "options/options.css"],
       "matches": ["<all_urls>"]
     }
   ]
