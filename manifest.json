@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Chrome Companion",
+  "version": "1.0.0",
+  "description": "A draggable pixel-art companion character that lives on every web page.",
+  "permissions": ["storage"],
+  "icons": {
+    "128": "assets/neutral.webp"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*.webp"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
