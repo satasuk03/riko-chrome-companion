@@ -44,4 +44,4 @@ If this policy is updated, changes will be reflected in this file in the project
 
 ## Contact
 
-For questions or concerns, open an issue on the [GitHub repository](https://github.com).
+For questions or concerns, open an issue on the [GitHub repository](https://github.com/satasuk03/riko-chrome-companion).
