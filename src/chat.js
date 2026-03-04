@@ -8,6 +8,10 @@ let chatInput = null;
 let chatVisible = false;
 let getPosition = () => ({ x: 0, y: 0 });
 
+// Conversation history for LLM context
+let conversationHistory = [];
+let isWaitingForResponse = false;
+
 export function initChat(elements, deps) {
   chatPanel = elements.panel;
   chatMessages = elements.messages;
@@ -62,6 +66,26 @@ function addMessage(text, sender) {
   msg.textContent = text;
   chatMessages.appendChild(msg);
   chatMessages.scrollTop = chatMessages.scrollHeight;
+  return msg;
+}
+
+function addTypingIndicator() {
+  const msg = document.createElement('div');
+  msg.className = 'chat-msg companion typing';
+  msg.textContent = '...';
+  msg.dataset.typing = 'true';
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  return msg;
+}
+
+function removeTypingIndicator() {
+  const typing = chatMessages.querySelector('[data-typing="true"]');
+  if (typing) typing.remove();
+}
+
+function getConversationHistory() {
+  return [...conversationHistory];
 }
 
 // ── Chat commands ────────────────────────────────────────────────────
@@ -80,6 +104,23 @@ const COMMANDS = {
       addMessage(`Emotion set to ${emotion}`, 'system');
     },
   },
+  '/clear': {
+    usage: '/clear',
+    description: 'Clear chat history and conversation context',
+    handler() {
+      conversationHistory = [];
+      chatMessages.innerHTML = '';
+      addMessage('Chat cleared.', 'system');
+    },
+  },
+  '/settings': {
+    usage: '/settings',
+    description: 'Open companion settings',
+    handler() {
+      chrome.runtime.sendMessage({ type: 'OPEN_SETTINGS' });
+      addMessage('Opening settings...', 'system');
+    },
+  },
   '/help': {
     usage: '/help',
     description: 'Show available commands',
@@ -94,7 +135,7 @@ const COMMANDS = {
 
 function handleSendMessage() {
   const text = chatInput.value.trim();
-  if (!text) return;
+  if (!text || isWaitingForResponse) return;
 
   chatInput.value = '';
 
@@ -115,11 +156,33 @@ function handleSendMessage() {
     return;
   }
 
-  // Regular message
+  // Regular message — send to LLM
   addMessage(text, 'user');
+  conversationHistory.push({ role: 'user', content: text });
 
-  // Placeholder companion response
-  setTimeout(() => {
-    addMessage("I heard you! LLM integration coming soon.", 'companion');
-  }, 500);
+  isWaitingForResponse = true;
+  chatInput.disabled = true;
+  addTypingIndicator();
+
+  chrome.runtime.sendMessage(
+    { type: 'CHAT_REQUEST', messages: getConversationHistory() },
+    (response) => {
+      removeTypingIndicator();
+      isWaitingForResponse = false;
+      chatInput.disabled = false;
+      chatInput.focus();
+
+      if (chrome.runtime.lastError) {
+        addMessage('Error: Could not reach companion service.', 'system');
+        return;
+      }
+
+      if (response?.success) {
+        conversationHistory.push({ role: 'assistant', content: response.text });
+        addMessage(response.text, 'companion');
+      } else {
+        addMessage(`Error: ${response?.error || 'No response from LLM.'}`, 'system');
+      }
+    }
+  );
 }

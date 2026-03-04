@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  background: #fefae0;
+  color: #2c2c2c;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+h1 {
+  font-size: 20px;
+  color: #5c4033;
+  margin-bottom: 2px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #8a7560;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 15px;
+  color: #5c4033;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #d4a373;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  color: #5c4033;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+
+label:first-of-type {
+  margin-top: 0;
+}
+
+select,
+input[type="password"],
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 2px solid #5c4033;
+  border-radius: 2px;
+  background: #fffdf0;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: #2c2c2c;
+  outline: none;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  border-color: #d4a373;
+  box-shadow: 0 0 0 1px #d4a373;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.api-key-row {
+  display: flex;
+  gap: 6px;
+}
+
+.api-key-row input {
+  flex: 1;
+}
+
+.btn-small {
+  padding: 8px 10px;
+  background: #fefae0;
+  border: 2px solid #5c4033;
+  border-radius: 2px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  color: #5c4033;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-small:hover {
+  background: #5c4033;
+  color: #fefae0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.btn {
+  padding: 8px 16px;
+  background: #d4a373;
+  border: 2px solid #5c4033;
+  border-radius: 2px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  color: #2c2c2c;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #5c4033;
+  transition: background 0.1s ease;
+}
+
+.btn:hover {
+  background: #5c4033;
+  color: #fefae0;
+}
+
+.btn:active {
+  box-shadow: 1px 1px 0px #5c4033;
+  transform: translate(2px, 2px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#status {
+  font-size: 12px;
+  color: #8a7560;
+}
+
+#status.success {
+  color: #2d6a2e;
+}
+
+#status.error {
+  color: #a32828;
+}

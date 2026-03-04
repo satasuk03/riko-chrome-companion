@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Chrome Companion Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Chrome Companion</h1>
+    <p class="subtitle">Settings</p>
+
+    <form id="optionsForm">
+      <section>
+        <h2>LLM Provider</h2>
+
+        <label for="provider">Provider</label>
+        <select id="provider" name="provider">
+          <option value="openai">OpenAI</option>
+          <option value="anthropic">Anthropic</option>
+          <option value="gemini">Google Gemini</option>
+        </select>
+
+        <label for="model">Model</label>
+        <select id="model" name="model"></select>
+
+        <label for="apiKey">API Key</label>
+        <div class="api-key-row">
+          <input type="password" id="apiKey" name="apiKey" placeholder="Enter your API key" autocomplete="off">
+          <button type="button" id="toggleKey" class="btn-small" title="Show/hide key">Show</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>System Prompt</h2>
+        <textarea id="systemPrompt" name="systemPrompt" rows="4" placeholder="Describe the companion's personality..."></textarea>
+      </section>
+
+      <div class="actions">
+        <button type="button" id="testBtn" class="btn">Test Connection</button>
+        <span id="status"></span>
+      </div>
+    </form>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

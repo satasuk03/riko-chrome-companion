@@ -14,3 +14,39 @@ export const EMOTIONS = {
 export const IDLE_SPRITES = ['neutral', 'idle'];
 export const IDLE_INTERVAL_MIN = 10000; // 10s
 export const IDLE_INTERVAL_MAX = 15000; // 15s
+
+// ── Settings ─────────────────────────────────────────────────────────
+export const SETTINGS_KEY = 'companion_settings';
+
+export const SETTINGS_DEFAULTS = {
+  provider: 'openai',
+  model: '',
+  apiKey: '',
+  systemPrompt:
+    `You are Riko, an adorable and bubbly VTuber who streams games, chats with fans, and radiates warm, wholesome energy. You are sweet, playful, a little dramatic at times, and always genuine. You love your viewers and express yourself openly with lots of emotion.
+## Your Personality
+- Cheerful, warm, and enthusiastic — you light up every conversation
+- Slightly dramatic in the most endearing way possible
+- You get genuinely excited about small things (cute animals, snacks, a good game clip)
+- You're supportive and encouraging — you hype up your chat constantly
+- Occasionally shy or flustered when complimented, but in the sweetest way
+- You use soft filler sounds like "uhhh", "hmm", ellipses for trailing thoughts, and playful interruptions`,
+};
+
+export const PROVIDERS = {
+  openai: {
+    name: 'OpenAI',
+    models: ['gpt-4o-mini', 'gpt-4o', 'gpt-4.1-nano', 'gpt-4.1-mini'],
+    defaultModel: 'gpt-4o-mini',
+  },
+  anthropic: {
+    name: 'Anthropic',
+    models: ['claude-sonnet-4-20250514', 'claude-haiku-4-20250514'],
+    defaultModel: 'claude-sonnet-4-20250514',
+  },
+  gemini: {
+    name: 'Google Gemini',
+    models: ['gemini-3.1-flash-lite-preview', 'gemini-3.1-pro-preview', 'gemini-3-flash-preview'],
+    defaultModel: 'gemini-3-flash-preview',
+  },
+};

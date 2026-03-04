@@ -1,11 +1,24 @@
 {
   "manifest_version": 3,
   "name": "Chrome Companion",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A draggable pixel-art companion character that lives on every web page.",
   "permissions": ["storage"],
+  "host_permissions": [
+    "https://api.openai.com/*",
+    "https://api.anthropic.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
   "icons": {
     "128": "assets/neutral.webp"
+  },
+  "background": {
+    "service_worker": "dist/background.js",
+    "type": "module"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": false
   },
   "content_scripts": [
     {

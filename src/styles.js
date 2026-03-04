@@ -232,6 +232,12 @@ export const SHADOW_CSS = `
     border-radius: 3px;
   }
 
+  @keyframes typing-dots {
+    0%, 20%  { opacity: 0.3; }
+    50%      { opacity: 1; }
+    80%, 100% { opacity: 0.3; }
+  }
+
   .chat-msg {
     max-width: 85%;
     padding: 8px 10px;
@@ -239,6 +245,10 @@ export const SHADOW_CSS = `
     line-height: 1.4;
     word-wrap: break-word;
     overflow-wrap: break-word;
+  }
+
+  .chat-msg.typing {
+    animation: typing-dots 1.2s ease-in-out infinite;
   }
 
   .chat-msg.user {

@@ -122,8 +122,21 @@ import { attachMessageListeners } from './messages.js';
     window.addEventListener('resize', clampToViewport);
 
     // Welcome bubble
+    const WELCOME_MESSAGES = [
+      'Hiii~! Click me, click me! Let\'s chat!',
+      'Ohhh, a new page! Hehe~ come say hi!',
+      'Psst... hey! I\'m right here~ wanna talk?',
+      'Yaaay, you\'re here! I missed you~!',
+      'Hmm hmm~ just hanging out... click me if you wanna chat!',
+      'Oh! Oh! Hi hi hi! I was waiting for you~!',
+      'Ehehe~ don\'t mind me, just vibing... unless you wanna talk?',
+      'Waaah, this page looks cool! ...Anyway, come chat with me!',
+      'Hey hey~! Riko is here and ready to talk!',
+      'Uhhh... is anyone there? Click me, I get lonely~!',
+    ];
+    const welcomeMsg = WELCOME_MESSAGES[Math.floor(Math.random() * WELCOME_MESSAGES.length)];
     setTimeout(() => {
-      setBubbleTextAnimated('Hello! Click me to chat!');
+      setBubbleTextAnimated(welcomeMsg);
     }, 500);
   }
 
