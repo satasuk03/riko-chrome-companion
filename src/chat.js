@@ -260,7 +260,7 @@ function handleSendMessage() {
 
       if (response?.success) {
         conversationHistory.push({ role: 'assistant', content: response.text });
-        addMessage(response.text, 'companion');
+        addMessageAnimated(response.text, 'companion');
       } else {
         addMessage(`Error: ${response?.error || 'No response from LLM.'}`, 'system');
       }

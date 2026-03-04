@@ -27,7 +27,13 @@ export function initEmotions(imgElement) {
 }
 
 function setSpriteUrl(emotion) {
-  characterImg.src = chrome.runtime.getURL(EMOTIONS[emotion]);
+  try {
+    characterImg.src = chrome.runtime.getURL(EMOTIONS[emotion]);
+  } catch {
+    // Extension context invalidated (e.g. after reload) — stop all timers
+    if (idleTimer) { clearTimeout(idleTimer); idleTimer = null; }
+    if (speakingInterval) { clearInterval(speakingInterval); speakingInterval = null; }
+  }
 }
 
 function randomIdleDelay() {
