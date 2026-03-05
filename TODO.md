@@ -1,7 +1,7 @@
 - [x] Settings Page
   - [x] LLM Integration (Gemini, OpenAI, Claude)
 - [x] Clear Chat 
-- [ ] Not satisfied emotion when user visits a grey listed site
+- [x] Not satisfied emotion when user visits a grey listed site
 - [ ] Memory -> Store user preferences, history, styles, etc.
 - Add new commands
   - [x] /summarize -> summarize current page

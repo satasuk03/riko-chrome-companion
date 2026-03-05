@@ -22,7 +22,7 @@ export const EMOTIONS = {
 export const SPEAK_FRAME_INTERVAL = 150;
 
 // Sprites that rotate randomly when no emotion is explicitly set
-export const IDLE_SPRITES = ['neutral', 'idle'];
+export const IDLE_SPRITES = ['neutral', 'idle', 'humming'];
 export const IDLE_INTERVAL_MIN = 10000; // 10s
 export const IDLE_INTERVAL_MAX = 15000; // 15s
 
