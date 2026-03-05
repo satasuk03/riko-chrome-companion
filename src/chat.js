@@ -2,12 +2,14 @@ import { EMOTIONS } from './constants.js';
 import { setEmotion, startSpeakingAnim, stopSpeakingAnim } from './emotions.js';
 import { hideBubble } from './bubble.js';
 import { loadSettings } from './settings.js';
+import { initAutocomplete } from './autocomplete.js';
 
 let chatPanel = null;
 let chatMessages = null;
 let chatInput = null;
 let chatVisible = false;
 let getPosition = () => ({ x: 0, y: 0 });
+let autocomplete = null;
 
 // Conversation history for LLM context
 let conversationHistory = [];
@@ -31,8 +33,14 @@ export function initChat(elements, deps) {
     chrome.runtime.sendMessage({ type: 'OPEN_HELP' });
   });
 
+  // Autocomplete for / commands
+  const inputArea = chatInput.closest('.chat-input-area');
+  autocomplete = initAutocomplete(chatInput, inputArea, COMMANDS);
+
+  chatInput.addEventListener('input', () => autocomplete.update());
   chatInput.addEventListener('keydown', (e) => {
     e.stopPropagation();
+    if (autocomplete.handleKey(e)) return;
     if (e.key === 'Enter') handleSendMessage();
   });
   chatInput.addEventListener('keyup', (e) => e.stopPropagation());
@@ -135,20 +143,6 @@ function getConversationHistory() {
 
 // ── Chat commands ────────────────────────────────────────────────────
 const COMMANDS = {
-  '/set-emotion': {
-    usage: '/set-emotion <neutral|happy|blush|angry>',
-    description: 'Change the companion emotion',
-    handler(args) {
-      const emotion = args[0];
-      if (!emotion || !EMOTIONS[emotion]) {
-        const available = Object.keys(EMOTIONS).join(', ');
-        addMessage(`Unknown emotion. Available: ${available}`, 'system');
-        return;
-      }
-      setEmotion(emotion);
-      addMessage(`Emotion set to ${emotion}`, 'system');
-    },
-  },
   '/clear': {
     usage: '/clear',
     description: 'Clear chat history and conversation context',

@@ -19,7 +19,7 @@
 - **Draggable companion** — drag Riko anywhere on the page, position persists across sites
 - **Chat panel** — click Riko to open a retro-styled chat powered by OpenAI, Anthropic, or Gemini
 - **Speech bubble** — typewriter animation with speaking sprite cycling
-- **Chat commands** — `/summarize`, `/set-emotion`, `/clear`, `/settings`, `/help`
+- **Chat commands** — `/summarize`, `/clear`, `/settings`, `/help`
 - **Social Detox Assistant** — keep nagging you to take a break from social media.
 - **Fully Customizable** — customize Riko's personality, app settings, and behavior to your liking.
 - 🚧 **Emotion system** 
@@ -47,7 +47,6 @@ For development with auto-rebuild: `npm run dev`
 | Command | Description |
 |---|---|
 | `/summarize` | Summarize the current webpage via LLM |
-| `/set-emotion <name>` | Change sprite (`neutral`, `happy`, `blush`, `angry`) |
 | `/clear` | Clear chat history and conversation context |
 | `/settings` | Open extension settings |
 | `/help` | List available commands |

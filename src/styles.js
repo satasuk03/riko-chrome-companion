@@ -284,6 +284,7 @@ export const SHADOW_CSS = `
   }
 
   .chat-input-area {
+    position: relative;
     display: flex;
     padding: 8px;
     border-top: 2px solid #5c4033;
@@ -329,5 +330,53 @@ export const SHADOW_CSS = `
   .chat-send:hover {
     background: #5c4033;
     color: #fefae0;
+  }
+
+  /* ── Command suggestions dropdown ── */
+  .cmd-suggestions {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background: #fefae0;
+    border: 2px solid #5c4033;
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    max-height: 180px;
+    overflow-y: auto;
+    z-index: 10;
+  }
+
+  .cmd-suggestion {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: #2c2c2c;
+  }
+
+  .cmd-suggestion:hover,
+  .cmd-suggestion.active {
+    background: #d4a373;
+  }
+
+  .cmd-suggestion-name {
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .cmd-suggestion-desc {
+    color: #8a7560;
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .cmd-suggestion.active .cmd-suggestion-desc {
+    color: #5c4033;
   }
 `;

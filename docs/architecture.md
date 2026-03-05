@@ -141,7 +141,6 @@ All data stored in `chrome.storage.local`:
 | Command | Handler |
 |---|---|
 | `/summarize` | Extracts page text, sends to LLM for summary |
-| `/set-emotion <name>` | Changes companion sprite |
 | `/clear` | Resets conversation history and chat UI |
 | `/settings` | Opens extension options page |
 | `/help` | Lists available commands |
