@@ -1,8 +1,9 @@
 import { EMOTIONS } from './constants.js';
-import { setEmotion, startSpeakingAnim, stopSpeakingAnim } from './emotions.js';
+import { startSpeakingAnim, stopSpeakingAnim } from './emotions.js';
 import { hideBubble } from './bubble.js';
 import { loadSettings } from './settings.js';
 import { initAutocomplete } from './autocomplete.js';
+import { parseEmote } from './emote-parser.js';
 
 let chatPanel = null;
 let chatMessages = null;
@@ -90,7 +91,7 @@ function addMessage(text, sender) {
   return msg;
 }
 
-function addMessageAnimated(text, sender, speed) {
+function addMessageAnimated(text, sender, speed, emotion) {
   speed = speed || 30;
   const msg = document.createElement('div');
   msg.className = 'chat-msg ' + sender;
@@ -98,7 +99,7 @@ function addMessageAnimated(text, sender, speed) {
   chatMessages.appendChild(msg);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
-  startSpeakingAnim();
+  startSpeakingAnim(emotion);
   let i = 0;
   const interval = setInterval(() => {
     if (i < text.length) {
@@ -187,8 +188,9 @@ const COMMANDS = {
             return;
           }
           if (response?.success) {
-            conversationHistory.push({ role: 'assistant', content: response.text });
-            addMessageAnimated(response.text, 'companion');
+            const parsed = parseEmote(response.text);
+            conversationHistory.push({ role: 'assistant', content: parsed.text });
+            addMessageAnimated(parsed.text, 'companion', undefined, parsed.emotion);
           } else {
             addMessage(`Error: ${response?.error || 'No response from LLM.'}`, 'system');
           }
@@ -252,8 +254,9 @@ function handleSendMessage() {
       }
 
       if (response?.success) {
-        conversationHistory.push({ role: 'assistant', content: response.text });
-        addMessageAnimated(response.text, 'companion');
+        const parsed = parseEmote(response.text);
+        conversationHistory.push({ role: 'assistant', content: parsed.text });
+        addMessageAnimated(parsed.text, 'companion', undefined, parsed.emotion);
       } else {
         addMessage(`Error: ${response?.error || 'No response from LLM.'}`, 'system');
       }

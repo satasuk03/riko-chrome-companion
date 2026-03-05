@@ -80,10 +80,29 @@ export function getCurrentEmotion() {
   return currentEmotion;
 }
 
-export function startSpeakingAnim() {
+let emoteHoldTimer = null;
+
+export function startSpeakingAnim(emotion) {
   if (speakingInterval) return;
   // Pause idle shuffle
   if (idleTimer) { clearTimeout(idleTimer); idleTimer = null; }
+
+  const hasEmote = emotion && EMOTIONS[emotion];
+
+  if (hasEmote) {
+    // Phase 1: hold the emote sprite for 1 second
+    setSpriteUrl(emotion);
+    emoteHoldTimer = setTimeout(() => {
+      emoteHoldTimer = null;
+      beginSpeakCycle();
+    }, 500);
+  } else {
+    // No emote — go straight to speak cycle
+    beginSpeakCycle();
+  }
+}
+
+function beginSpeakCycle() {
   let isNeutralFrame = true;
   const speakSprites = ['speak1', 'speak2'];
   speakingInterval = setInterval(() => {
@@ -97,9 +116,8 @@ export function startSpeakingAnim() {
 }
 
 export function stopSpeakingAnim() {
-  if (!speakingInterval) return;
-  clearInterval(speakingInterval);
-  speakingInterval = null;
+  if (emoteHoldTimer) { clearTimeout(emoteHoldTimer); emoteHoldTimer = null; }
+  if (speakingInterval) { clearInterval(speakingInterval); speakingInterval = null; }
   setSpriteUrl('neutral');
   emotionOverride = null;
   scheduleIdleShuffle();

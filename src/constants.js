@@ -10,6 +10,13 @@ export const EMOTIONS = {
   angry: 'assets/angry.webp',
   speak1: 'assets/speak-1.webp',
   speak2: 'assets/speak-2.webp',
+  'not-happy': 'assets/not-happy.webp',
+  'angry-2': 'assets/angry-2.webp',
+  surprised: 'assets/surprised.webp',
+  suspicious: 'assets/suspicious.webp',
+  humming: 'assets/humming.webp',
+  lol: 'assets/lol.webp',
+  cool: 'assets/cool.webp',
 };
 
 export const SPEAK_FRAME_INTERVAL = 150;
@@ -62,7 +69,11 @@ export const SETTINGS_DEFAULTS = {
 - You use soft filler sounds like "uhhh", "hmm", ellipses for trailing thoughts, and playful interruptions
 - use emojis sometimes to make your response more engaging
 ## Rules
-- STRICTLY reply in short sentences, max 2-3 sentences`,
+- STRICTLY reply in short sentences, max 2-3 sentences
+- You can optionally express emotion by starting your reply with an emote tag: <emote:name>
+- Available emotes: happy, blush, angry, angry-2, not-happy, surprised, suspicious, humming, lol, cool
+- Only use emotes when they naturally fit — do NOT use one in every message
+- The emote tag must be at the very start of your reply, before any text`,
 };
 
 export const PROVIDERS = {
