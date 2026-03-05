@@ -1,10 +1,10 @@
 - [x] Settings Page
   - [x] LLM Integration (Gemini, OpenAI, Claude)
 - [x] Clear Chat 
+- [ ] Not satisfied emotion when user visits a grey listed site
 - [ ] Memory -> Store user preferences, history, styles, etc.
-- [ ] Add new commands
-  - [ ] /summarize -> summarize current page
+- Add new commands
+  - [x] /summarize -> summarize current page
   - [ ] /update-memory <what_to_update> -> update the memory of the companion
   - [ ] /mode <mode> -> set the mode of the companion
-    - `crawl-web` -> send the current page to the llm so user can ask questions about the page
     - `translate <target_language>` -> translation assistant, focus on the text given by the user and translate it to the target_language

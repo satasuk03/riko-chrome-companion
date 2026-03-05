@@ -21,6 +21,7 @@
 - **Speech bubble** — typewriter animation with speaking sprite cycling
 - **Chat commands** — `/summarize`, `/set-emotion`, `/clear`, `/settings`, `/help`
 - **Social Detox Assistant** — help you detox from social media and stay focused on your work, when you visit a social media platform, Riko will help you detox by reminding you to take a break and stay focused on your work.
+- **Fully Customizable** — customize Riko's personality, app settings, and behavior to your liking.
 - 🚧 **Emotion system** 
 
 ## Getting Started
