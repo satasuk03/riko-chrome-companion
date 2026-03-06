@@ -16,6 +16,8 @@
 
 ## Install (TL;DR)
 
+*REQUIRES: LLM API KEY PROVIDER
+
 1. [Download the release](release/riko-chrome-companion.zip)
 2. Unzip file
 2. Go to `chrome://extensions` → enable **Developer mode**
@@ -31,6 +33,7 @@
 - **Social Detox Assistant** — keep nagging you to take a break from social media.
 - **Fully Customizable** — customize Riko's personality, app settings, and behavior to your liking.
 - **Emotion system**  - express emotion based on response
+- 🚧 **Ollama Local Model Support** - Incoming
 
 <div align="center">
   <img src="demos/social-detox.webp" alt="Social Detox Assistant" width="300" />
