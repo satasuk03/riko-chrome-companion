@@ -16,7 +16,8 @@
 
 ## Install (TL;DR)
 
-1. [Download this repo](../../archive/refs/heads/main.zip) and unzip it
+1. [Download the release](release/riko-chrome-companion.zip)
+2. Unzip file
 2. Go to `chrome://extensions` → enable **Developer mode**
 3. Click **Load unpacked** → select the unzipped folder
 4. Done! Riko appears on every page

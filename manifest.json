@@ -10,7 +10,7 @@
     "https://generativelanguage.googleapis.com/*"
   ],
   "icons": {
-    "128": "assets/neutral.webp"
+    "128": "icons/icon.png"
   },
   "background": {
     "service_worker": "dist/background.js",
