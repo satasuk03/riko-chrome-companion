@@ -29,7 +29,7 @@
 - **Draggable companion** — drag Riko anywhere on the page, position persists across sites
 - **Chat panel** — click Riko to open a retro-styled chat powered by OpenAI, Anthropic, or Gemini
 - **Speech bubble** — typewriter animation with speaking sprite cycling
-- **Chat commands** — `/summarize`, `/clear`, `/settings`, `/help`
+- **Chat commands** — `/summarize`, `/clear`, `/settings`, `/stats`, `/help`
 - **Social Detox Assistant** — keep nagging you to take a break from social media.
 - **Fully Customizable** — customize Riko's personality, app settings, and behavior to your liking.
 - **Emotion system**  - express emotion based on response
@@ -61,6 +61,7 @@ To create a release zip: `npm run release`
 | `/summarize` | Summarize the current webpage via LLM |
 | `/clear` | Clear chat history and conversation context |
 | `/settings` | Open extension settings |
+| `/stats` | Show your top browsing stats (roasted by Riko if LLM is connected) |
 | `/help` | List available commands |
 
 ## Supported LLM Providers
